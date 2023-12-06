@@ -1,6 +1,7 @@
 # README for Bash Scripts for Rundeck on Steam Deck
 
 ## Introduction
+
 This repository contains a collection of Bash scripts designed for managing and automating tasks on Rundeck, specifically tailored for the Steam Deck, which runs on Arch Linux. Below are some essential fixes, commands, and software recommendations for optimizing your experience on the Steam Deck.
 
 ## Fixing KWallet on Arch Linux (Steam Deck)
@@ -8,22 +9,32 @@ This repository contains a collection of Bash scripts designed for managing and 
 KWallet is a credential management system for KDE, and sometimes it might require manual fixing on Arch Linux. Here are the steps:
 
 1. **Install KWalletManager**:
+
    - Use your package manager to install `kwalletmanager`.
-   
+
 2. **Reset KWallet Configuration**:
+
    - Execute the following commands in your terminal:
 
-```
-cd
+```cd
 mv .local/share/kwalletd/kdewallet.kwl .local/share/kwalletd/kdewallet.kwl.ori
 mv .local/share/kwalletd/kdewallet.salt .local/share/kwalletd/kdewallet.salt.ori
 ```
 
 3. **Create a New Wallet**:
-   - Open KWalletManager.
-   - Create a new wallet with the following characteristics:
-     - Name: `kdewallet`
-     - Encryption: `blowfish` (set a secure password)
+
+- Open KWalletManager.
+- Create a new wallet with the following characteristics:
+  - Name: `kdewallet`
+  - Encryption: `blowfish` (set a secure password)
+
+4. **Fix pacman**:
+
+'''
+sudo pacman-key --init
+sudo pacman-key --populate
+sudo pacman-key --refresh-keys
+'''
 
 ## Useful Commands for Steam Deck
 
@@ -36,10 +47,6 @@ Ensure to execute these commands in the given order for optimal setup:
 2. **Disabling Read-Only Mode**:
    - `sudo steamos-readonly disable`
    - This command disables the read-only mode, allowing system modifications.
-
-3. **Updating System Packages**:
-   - `sudo pacman -Syu`
-   - Regularly run this command to keep your system and applications up to date.
 
 ## Recommended Software
 
@@ -71,4 +78,4 @@ Ensure to execute these commands in the given order for optimal setup:
 
 ---
 
-Feel free to contribute to this repository with your own scripts or improvements!
+Feel free to contribute to this repository with your scripts or improvements!
